@@ -25,7 +25,7 @@
     <p class="title-2">Transaction Date</p>
     <p id="warrantyID" class="item-warranty">NaN</p>
     <p class="title-3">Warranty</p>
-    <p id="priceID" class="item-amount">Php </p>
+    <p id="priceID" class="item-amount">Php 0 </p>
     <p class="title-4">Amount</p>
     <button class="accept" @click="receivePage"></button>
     <button class="decline"></button>
@@ -34,16 +34,16 @@
     
         <div class="media-body">
           <div class="media">
-         <img class="profile-image" src="src/assets/img/done.png" alt="Generic placeholder image mr-7" height="10" width="20">
+         <img class="profile-image" src="/src/assets/img/done.png" alt="Generic placeholder image mr-7" height="10" width="20">
             <div class="join-in">
-            <h5 id="fullnameID" class="uk-margin-remove-top">NaN</h5>
-            <img class="sender-icon" src="src/assets/img/senderIcon.png" alt="">
+            <h5 id="sender_fullname" class="uk-margin-remove-top">NaN</h5>
+            <img class="sender-icon" src="/src/assets/img/senderIcon.png" alt="">
             </div>
-            <img class="location-icon" src="src/assets/img/phoneIcon.png" alt="">
-            <img class="mobile-icon" src="src/assets/img/phoneIcon.png" alt="">
+            <img class="location-icon" src="/src/assets/img/phoneIcon.png" alt="">
+            <img class="mobile-icon" src="/src/assets/img/phoneIcon.png" alt="">
              <div class="media-description">
-           <p class="text-muted">+639028458288</p>
-            <p class="text-muted">Rm.803, New Star Bldg, Central Condominium,<br>Quezon City, Metro Manila, Philippines</p>
+           <p id="sender_contactNumber" class="text-muted">NaN</p>
+            <p id="sender_address" class="text-muted">NaN</p>
              </div>
              <hr>
           </div>
@@ -53,16 +53,16 @@
             <div class="media-2">
            <div class="media-body">
           <div class="media">
-         <img class="profile-image" src="src/assets/img/done.png" alt="Generic placeholder image mr-7" height="10" width="20">
+         <img  id="receiver_photo" class="profile-image" src="NaN" height="10" width="20">
              <div class="join-in">
-            <h5 class="uk-margin-remove-top">Gilber Cuaresma</h5>
-            <img class="sender-icon" src="src/assets/img/receiverIcon.png" alt="">
+            <h5 id="receiver_contactNumber" class="uk-margin-remove-top">NaN</h5>
+            <img class="sender-icon" src="/src/assets/img/receiverIcon.png" alt="">
             </div>
-            <img class="location-icon" src="src/assets/img/phoneIcon.png" alt="">
-            <img class="mobile-icon" src="src/assets/img/phoneIcon.png" alt="">
+            <img class="location-icon" src="/src/assets/img/phoneIcon.png" alt="">
+            <img class="mobile-icon" src="/src/assets/img/phoneIcon.png" alt="">
              <div class="media-description">
-           <p class="text-muted">+639028458288</p>
-            <p class="text-muted">Rm.803, New Star Bldg, Central Condominium,<br>Quezon City, Metro Manila, Philippines</p>
+           <p id="receiver_contactNumber" class="text-muted">NaN</p>
+            <p id="receiver_address" class="text-muted">NaN</p>
              </div>
              <hr>
           </div>

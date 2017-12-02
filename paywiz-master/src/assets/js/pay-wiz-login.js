@@ -11,9 +11,12 @@ $(window, document, undefined).ready(function() {
       firebase.initializeApp(config);
         
     var dbRef = firebase.database();
+    var userRef ;
     var jsText, jsText2, obj;
+    var senderJsText, receiverJsText ; 
     var dateEpoch, creationDate;    
-    var senderID,  receiverID;
+    var senderID,  receiverID, obj_2;
+    var senderID_2,  receiverID_2, obj_3;
   $('#doTrack').on('click', function (e) {
     e.preventDefault();
     var trackText = $('#input-track').val();
@@ -34,23 +37,56 @@ $(window, document, undefined).ready(function() {
       });
       
       if (key) {
-             dateEpoch = obj.creation_date;
-             creationDate = new Date(dateEpoch);
-             console.log(creationDate);
+            dateEpoch = obj.creation_date;
+            creationDate = new Date(dateEpoch);
+           
             localStorage.setItem("title",obj.title);
             localStorage.setItem("detail",obj.detail);
             localStorage.setItem("creation",creationDate);
             localStorage.setItem("warranty",obj.warranty);
             localStorage.setItem("price",obj.amount);
-            localStorage.setItem("sender_uid",obj.sender_uid);
-            localStorage.setItem("receiver_uid",obj.receiver_uid);
-            window.location = "/other_layouts/transaction-info.html";
+            senderUID(obj);
         // console.log(obj.title);
         // window.location = "other_layouts/transaction-info.html";
       } else {
         console.log("User not found.");
       }
-    
+      function senderUID(obj)
+      {
+        senderID = dbRef.ref('users/'+obj.sender_uid).once('value' ,function(snapshot)
+        {
+            var key;
+            console.log(obj.sender_uid);
+            snapshot.forEach(function(childSnapshot){
+                key = childSnapshot.key;
+                senderID = childSnapshot.val();
+                senderID_2 = JSON.stringify(senderID);
+                obj_2 = JSON.parse(senderID_2);
+                localStorage.setItem("sender_fullname", obj_2.firstname +" "+obj_2.lastname);
+                localStorage.setItem("sender_contactNumber", obj_2.phone_number);
+                localStorage.setItem("sender_photo", obj_2.photo_url);
+                localStorage.setItem("sender_address", obj_2.address_street_brgy +", "+obj_2.address_state+", "+obj_2.address_city);
+                console.log(obj_2.firstname);
+            })
+        });
+        receiverID = dbRef.ref('users/'+obj.receiver_uid).once('value' ,function(snapshot)
+        {
+            var key;
+            snapshot.forEach(function(childSnapshot){
+                key = childSnapshot.key;
+                receiverID = childSnapshot.val();
+                receiverID_2 = JSON.stringify(receiverID);
+                obj_3 = JSON.parse(receiverID_2);
+                localStorage.setItem("receiver_fullname", obj_3.firstname +" "+obj_3.lastname);
+                localStorage.setItem("receiver_contactNumber", obj_3.phone_number);
+                localStorage.setItem("receiver_photo", obj_3.photo_url);
+                localStorage.setItem("receiver_address", obj_3.address_street_brgy +", "+obj_3.address_state+", "+obj_3.address_city);
+                console.log(obj_3.firstname);
+            })
+        });
+
+      }
+  
     });
   });
 })  
